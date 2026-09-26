@@ -4,24 +4,24 @@ import java.util.List;
 
 /**
  * 一次命中：命中的模式 + 被 `*` 捕获的段。
- *
- * <p>本文件当前是**空壳**：构造器与方法体只抛 {@link UnsupportedOperationException}。
- * 类名、方法签名与返回约定已经是最终形态（见 README「对外契约」第 8、9 条），不要改动；
- * 内部表示与私有成员可以自由设计。
  */
 public class Match {
+
+    private final String pattern;
+    private final List<String> params;
 
     /**
      * @param pattern 构造时传入的**原始模式字符串**（不做归一化改写）
      * @param params  被 `*` 捕获的段，原样（不做 URL 解码）；没有 `*` 时为空列表
      */
     public Match(String pattern, List<String> params) {
-        throw new UnsupportedOperationException("not implemented");
+        this.pattern = pattern;
+        this.params = List.copyOf(params);
     }
 
     /** 命中的模式字符串，即构造时传入的那一条原文。 */
     public String pattern() {
-        throw new UnsupportedOperationException("not implemented");
+        return pattern;
     }
 
     /**
@@ -29,6 +29,6 @@ public class Match {
      * 模式里没有 `*` 时为空列表。列表不可修改。
      */
     public List<String> params() {
-        throw new UnsupportedOperationException("not implemented");
+        return params;
     }
 }
